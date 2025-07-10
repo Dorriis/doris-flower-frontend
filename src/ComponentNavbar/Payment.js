@@ -44,7 +44,7 @@ const Payment = () => {
                 return;
             }
             try {
-                const response = await axios.get(`http://localhost:5000/api/controlUsers/${userId}/payment`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/controlUsers/${userId}/payment`);
                 const data = response.data;
 
                 if (data && data.paymentInfo) {
@@ -114,14 +114,14 @@ const Payment = () => {
             };
             try {
                 if (editingCard) {
-                    const response = await axios.put(`http://localhost:5000/api/controlUsers/${userId}/payment/${editingCard._id}`, paymentInfo);
+                    const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/controlUsers/${userId}/payment/${editingCard._id}`, paymentInfo);
                     if (response.status === 200) {
                         setCards(cards.map(card => card._id === editingCard._id ? response.data : card));
                         setSuccessMessage(' Payment Update successfully!');
                     }
 
                 } else {
-                    const response = await axios.post(`http://localhost:5000/api/controlUsers/${userId}/payment`, paymentInfo);
+                    const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/controlUsers/${userId}/payment`, paymentInfo);
                     if (response.status === 200) {
                         setCards([...cards, response.data]);
                         setSuccessMessage('Payment added successfully!');
@@ -185,7 +185,7 @@ const Payment = () => {
         if (!cardToDelete) return;
 
         try {
-            await axios.delete(`http://localhost:5000/api/controlUsers/${userId}/payment/delete/${cardToDelete._id}`);
+            await axios.delete(`${process.env.REACT_APP_API_URL}/api/controlUsers/${userId}/payment/delete/${cardToDelete._id}`);
             setCards(cards.filter(card => card._id !== cardToDelete._id));
             setSuccessMessage('Card deleted successfully!');
         } catch (error) {

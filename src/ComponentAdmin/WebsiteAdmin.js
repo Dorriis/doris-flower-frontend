@@ -24,7 +24,7 @@ const WebsiteAdmin = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/Blogs');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Blogs`);
                 if (Array.isArray(response.data) && response.data.length > 0) {
                     setBlogs(response.data);
                 } else {
@@ -38,7 +38,7 @@ const WebsiteAdmin = () => {
 
         const fetchWorkshops = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/workshops');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/workshops`);
 
                 if (Array.isArray(response.data)) {
                     setWorkshops(response.data);
@@ -66,7 +66,7 @@ const WebsiteAdmin = () => {
 
     const handleDeleteBlogs = async (blogId) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/api/Blogs/${blogId}`);
+            const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/Blogs/${blogId}`);
             if (response.status === 200) {
                 setBlogs(blogs.filter(blog => blog._id !== blogId));
             } else {
@@ -87,7 +87,7 @@ const WebsiteAdmin = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:5000/api/workshops/add', formData);
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/workshops/add`, formData);
             setWorkshops([...workshops, response.data]);
             setFormData({ topic: '', date: '', time: '', content: '' }); // Reset form
         } catch (error) {
@@ -98,7 +98,7 @@ const WebsiteAdmin = () => {
 
     const handleUpdateWorkshop = async () => {
         try {
-            const response = await axios.put(`http://localhost:5000/api/workshops/${currentWorkshop._id}`, formData);
+            const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/workshops/${currentWorkshop._id}`, formData);
             setWorkshops(workshops.map(w => w._id === currentWorkshop._id ? response.data : w));
             handleCloseEditModal();
         } catch (error) {
@@ -129,7 +129,7 @@ const WebsiteAdmin = () => {
 
     const handleDeleteWorkshop = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/workshops/${id}`);
+            await axios.delete(`${process.env.REACT_APP_API_URL}/api/workshops/${id}`);
             setWorkshops(workshops.filter(workshop => workshop._id !== id));
         } catch (error) {
             console.error('Error deleting workshop:', error);

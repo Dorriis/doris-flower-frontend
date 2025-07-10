@@ -16,7 +16,7 @@ export const CartProvider = ({ children }) => {
             if (!userId) return;
 
             try {
-                const response = await axios.get(`http://localhost:5000/api/controlUsers/${userId}/cart`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/controlUsers/${userId}/cart`);
 
                 if (Array.isArray(response.data)) {
                     setCartItems(response.data);
@@ -50,7 +50,7 @@ export const CartProvider = ({ children }) => {
         setCartItems(updatedCart);
 
         try {
-            await axios.post(`http://localhost:5000/api/controlUsers/${userId}/cart/add`, {
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/controlUsers/${userId}/cart/add`, {
                 productId: product._id,
                 quantity: 1
             });
@@ -69,7 +69,7 @@ export const CartProvider = ({ children }) => {
 
         try {
 
-            await axios.delete(`http://localhost:5000/api/controlUsers/${userId}/cart/remove/${productId}`, {
+            await axios.delete(`${process.env.REACT_APP_API_URL}/api/controlUsers/${userId}/cart/remove/${productId}`, {
                 data: { productId }
             });
         } catch (error) {
@@ -94,7 +94,7 @@ export const CartProvider = ({ children }) => {
         });
 
         try {
-            await axios.put(`http://localhost:5000/api/controlUsers/${userId}/cart/update/${productId}`, {
+            await axios.put(`${process.env.REACT_APP_API_URL}/api/controlUsers/${userId}/cart/update/${productId}`, {
                 newQuantity
             });
         } catch (error) {

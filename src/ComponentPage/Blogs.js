@@ -12,7 +12,7 @@ const Blog = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/Blogs');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Blog`);
                 if (Array.isArray(response.data) && response.data.length > 0) {
                     setBlogs(response.data);
                 } else {
@@ -26,7 +26,7 @@ const Blog = () => {
 
         const fetchWorkshop = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/workshops');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/workshops`);
                 setWorkshop(response.data);
 
             } catch (error) {

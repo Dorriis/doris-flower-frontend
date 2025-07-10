@@ -72,7 +72,7 @@ function ProductsAdmin() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/products');
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products`);
                 const data = await response.json();
                 const shuffledData = shuffleArray(data);
                 const filteredByCatalog = selectedCatalog
@@ -207,7 +207,7 @@ function ProductsAdmin() {
         formData.append('img', imageUrl || img);
 
         try {
-            const response = await axios.post('http://localhost:5000/api/products', formData, {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/products`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -229,7 +229,7 @@ function ProductsAdmin() {
     };
     const handleDeleteProduct = async (productId) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/api/products/${productId}`);
+            const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/products/${productId}`);
 
             if (response.status === 200) {
 

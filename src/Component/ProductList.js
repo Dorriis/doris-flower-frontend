@@ -44,7 +44,7 @@ const ProductList = ({ products, visibleCount, isLazyLoading, searchQuery }) => 
     const handleUpdateProduct = async () => {
         try {
             const updatedProduct = { ...currentProduct, ...formData };
-            const response = await axios.put(`http://localhost:5000/api/products/${updatedProduct._id}`, updatedProduct);
+            const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/products/${updatedProduct._id}`, updatedProduct);
             if (response.status === 200) {
                 setProducts(products.map(product => product._id === updatedProduct._id ? response.data.product : product));
                 setShowEditModal(false);
@@ -79,7 +79,7 @@ const ProductList = ({ products, visibleCount, isLazyLoading, searchQuery }) => 
 
     const handleDeleteProduct = async (product) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/api/products/${product._id}`);
+            const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/products/${product._id}`);
 
             if (response.status === 200) {
                 setProducts(productsState.filter(p => p._id !== product._id));

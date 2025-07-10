@@ -13,7 +13,7 @@ const ChatBox = () => {
         setMessages([...messages, userMsg]);
         setInput("");
 
-        const res = await fetch("http://localhost:5000/chatbox", {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/chatbox`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message: input }),

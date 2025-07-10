@@ -58,7 +58,7 @@ const Profile = () => {
                 ...(password && { password }),
             };
 
-            const response = await axiosInstance.put(`http://localhost:5000/api/controlUsers/${_id}`, updateData);
+            const response = await axiosInstance.put(`${process.env.REACT_APP_API_URL}/api/controlUsers/${_id}`, updateData);
             const updatedUser = response.data;
 
             dispatch(loginSuccess({ ...updatedUser }));

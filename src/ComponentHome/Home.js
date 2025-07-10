@@ -36,7 +36,7 @@ function Home() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/products');
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products`);
                 const data = await response.json();
                 const shuffledData = shuffleArray(data);
                 setProducts(shuffledData);
@@ -74,7 +74,7 @@ function Home() {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/Blogs');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Blogs`);
                 if (Array.isArray(response.data) && response.data.length > 0) {
                     setBlogs(response.data);
                 } else {

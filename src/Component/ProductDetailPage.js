@@ -20,8 +20,8 @@ const ProductDetailPage = () => {
         const fetchProducts = async () => {
             try {
                 const [productResponse, allProductsResponse] = await Promise.all([
-                    axios.get(`http://localhost:5000/api/products/${id}`),
-                    axios.get('http://localhost:5000/api/products')
+                    axios.get(`${process.env.REACT_APP_API_URL}/api/products/${id}`),
+                    axios.get(`${process.env.REACT_APP_API_URL}/api/products`)
                 ]);
                 setProduct(productResponse.data);
                 setProducts(allProductsResponse.data);

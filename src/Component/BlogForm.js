@@ -118,7 +118,7 @@ const BlogSlider = ({ blogs }) => {
 
     const handleDeleteBlogs = async (blog) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/api/Blogs/${blog._id}`);
+            const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/Blogs/${blog._id}`);
 
             if (response.status === 200) {
                 setBlogs(blogsState.filter(b => b._id !== blog._id));
@@ -179,7 +179,7 @@ const BlogSlider = ({ blogs }) => {
         formData.append('img', newBlogImgURL || imageUrl);
 
         try {
-            const response = await axios.post('http://localhost:5000/api/Blogs', formData, {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/Blogs`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

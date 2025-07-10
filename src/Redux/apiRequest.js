@@ -6,7 +6,7 @@ import { loginFail, loginStart, loginSuccess, logOutFail, logOutStart, logOutSuc
 export const loginUser = async (user, dispatch, navigate) => {
     dispatch(loginStart());
     try {
-        const res = await axios.post('http://localhost:5000/api/users/login', user, { withCredentials: true });
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/users/login`, user, { withCredentials: true });
         dispatch(loginSuccess(res.data));
         navigate('/home')
     } catch (error) {
@@ -18,7 +18,7 @@ export const loginUser = async (user, dispatch, navigate) => {
 export const registerUser = async (user, dispatch) => {
     dispatch(registerStart());
     try {
-        await axios.post('http://localhost:5000/api/users/register', user);
+        await axios.post(`${process.env.REACT_APP_API_URL}/api/users/register`, user);
         dispatch(registerSuccess());
 
     } catch (error) {
@@ -33,7 +33,7 @@ export const logOut = async (dispatch, navigate, accessToken, axiosLogoutJwt) =>
         const newAccessToken = await refreshToken();
         const validToken = newAccessToken || accessToken;
         await axiosLogoutJwt.post(
-            "http://localhost:5000/api/users/logout",
+            `${process.env.REACT_APP_API_URL}/api/users/logout`,
             null,
             {
                 headers: { Authorization: `Bearer ${validToken}` },

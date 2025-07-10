@@ -5,9 +5,10 @@ import { store } from '../Redux/store';
 
 export const refreshToken = async () => {
     try {
-        const res = await axios.post("http://localhost:5000/api/users/refresh", null, {
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/users/refresh`, null, {
             withCredentials: true,
         });
+
         return res.data.accessToken;
     } catch (err) {
         console.error("Error refreshing token:", err.response?.data || err.message);

@@ -37,7 +37,7 @@ function BillingDetails() {
             }
 
             try {
-                const response = await axios.get(`http://localhost:5000/api/controlUsers/${userId}/billing-details`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/controlUsers/${userId}/billing-details`);
                 const data = response.data;
 
                 if (data && data.billingDetails) {
@@ -84,7 +84,7 @@ function BillingDetails() {
             try {
 
                 if (existingDetails) {
-                    const response = await axios.put(`http://localhost:5000/api/controlUsers/${userId}/billing-details/edit`, billingDetails);
+                    const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/controlUsers/${userId}/billing-details/edit`, billingDetails);
                     if (response.status === 200) {
                         setSuccessMessage('Billing details updated successfully!');
                         navigate('/payment', {
@@ -96,7 +96,7 @@ function BillingDetails() {
                     }
                 } else {
 
-                    const response = await axios.post(`http://localhost:5000/api/controlUsers/${userId}/billing-details`, billingDetails);
+                    const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/controlUsers/${userId}/billing-details`, billingDetails);
                     if (response.status === 200) {
                         setSuccessMessage('Billing details added successfully!');
                         navigate('/payment', {

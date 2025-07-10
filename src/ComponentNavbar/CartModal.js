@@ -23,7 +23,7 @@ const CartModal = ({ show, onClose }) => {
 
         const productIds = cartItems.map(item => item.id).join(',');
         try {
-            const response = await axios.get(`http://localhost:5000/api/controlUsers/${userId}/cart`, {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/controlUsers/${userId}/cart`, {
                 params: { ids: productIds },
             });
 
@@ -42,7 +42,7 @@ const CartModal = ({ show, onClose }) => {
         const productIds = cartItems.map(item => item.productId);
         try {
             const productRequests = productIds.map(id =>
-                axios.get(`http://localhost:5000/api/products/${id}`)
+                axios.get(`${process.env.REACT_APP_API_URL}/api/products/${id}`)
             );
 
             const responses = await Promise.all(productRequests);
