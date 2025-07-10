@@ -1,0 +1,149 @@
+.navbar-brand {
+    white-space: normal !important;
+}
+.custom-footer {
+    position: relative;
+    background-color: #F8F3F0;
+    height: 300px !important;
+    margin-top: 100px;
+}
+
+.content-title-footer:focus{
+    color: #198754;
+}
+
+.custom-footer-column {
+    flex: 1;
+    min-width: 300px; 
+    max-width: 33.33%; 
+    box-sizing: border-box;
+}
+.custom-footer-title{
+ padding-left: 130px;
+ text-align: left;
+}
+
+
+.custom-logo-footer img {
+    max-width: 250px;
+    height: 100px !important;
+    margin-bottom: 10px;
+}
+.custom-footer-information {
+    display: flex;
+    flex-direction: column;
+}
+
+.title-footer {
+    color: #000 !important;
+    font-weight: bold; 
+    margin: 15px 0 0 0;
+}
+
+.custom-logo-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.logo-content-footer {
+    max-width: 250px ;
+    font-size: 16px;
+    font-style: italic;
+    color: #c9c9c9;
+}
+.custom-footer-column-contact{
+    padding-right: 130px;
+    text-align: right;
+}
+.content-title-footer{
+    margin: 15px 0 0 0 !important;
+}
+
+.contact-footer {
+    color: #198754;
+    margin: 15px 0 0 0;
+  
+}
+.contact-email-footer{
+    margin: 15px 0 0 0;
+}
+.footer-item-icons{
+    margin: 15px 0 0 0;
+}
+
+.footer-icons{
+    margin-left: 50px !important;
+}
+
+@media (max-width: 991.98px) {
+    .custom-footer {
+        height: auto !important;
+        padding: 40px 0;
+        text-align: center;
+    }
+
+    .custom-footer-column,
+    .custom-footer-column-contact {
+        max-width: 100%;
+        padding: 0 !important;
+        margin-bottom: 30px;
+        text-align: center !important;
+    }
+
+    .custom-footer-title {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .custom-logo-footer img {
+        height: 80px !important;
+    }
+
+    .logo-content-footer {
+        margin: 0 auto;
+        font-size: 14px;
+    }
+
+    .footer-icons {
+        margin-left: 20px !important;
+    }
+}
+
+
+@media (max-width: 575.98px) {
+    .custom-footer {
+        margin-top: 50px;
+        padding: 30px 0;
+    }
+
+    .custom-logo-footer img {
+        max-width: 200px;
+        height: auto !important;
+    }
+
+    .title-footer {
+        font-size: 18px;
+    }
+
+    .logo-content-footer {
+        font-size: 13px;
+        max-width: 90%;
+    }
+
+    .content-title-footer,
+    .contact-footer,
+    .contact-email-footer {
+        font-size: 14px;
+    }
+
+    .footer-icons {
+        margin: 10px !important;
+    }
+
+    .footer-item-icons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}

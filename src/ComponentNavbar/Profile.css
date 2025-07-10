@@ -1,0 +1,71 @@
+.profile-container{
+    border: 0.8px solid #c9c9c9;
+    border-radius: 10px;
+    margin: 100px auto;
+    max-width: 500px;
+    padding: 20px 30px;
+}
+.profile-title{
+    padding: 8px 0 18px 0;
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f8f3f0;
+}
+
+.btn-update-form{
+    width: 250px;
+    text-align: center;
+    border: 0.8px solid #198754;
+    color: #198754;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 8px;
+    cursor: pointer;
+    display: block; 
+    margin: 20px auto 0 auto;
+}
+.avatar-container {
+    position: relative;
+    display: inline-block;
+}
+
+.avatar-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.avatar-upload-label {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.camera-icon {
+    color: #808080;
+    font-size: 20px;
+}
+
+.avatar-upload-input {
+    display: none;
+}

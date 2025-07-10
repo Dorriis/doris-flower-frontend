@@ -1,0 +1,22 @@
+/* css website admin */
+
+.website-admin{
+    margin-top:  185px;
+}
+
+.workshop-icon-body{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.workshop-icon{
+    padding-right: 24px;
+   text-align: right;
+}
+
+.card-body{
+    width: 95%;
+    padding: 25px 0 0 0 !important;
+    max-height: 220px;
+}

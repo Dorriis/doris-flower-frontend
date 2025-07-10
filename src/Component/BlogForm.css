@@ -1,0 +1,19 @@
+
+.justify-content-center{
+    margin: 0;
+}
+.admin-add-blogs{
+    max-width: 1140px;
+   justify-content: right;
+}
+
+button.add-blog-btn.btn.btn-primary{
+    border: 0.8px solid #c9c9c9 !important;
+    text-align: center;
+    margin: 80px 0 25px 0;
+    background-color:  #f8f3f0 !important;
+    max-width: 150px ;
+    font-size: 18px;
+    font-weight: 450;
+}
+

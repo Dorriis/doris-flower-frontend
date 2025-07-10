@@ -1,0 +1,336 @@
+.payment-page {
+    padding: 20px;
+    margin-top: 80px;
+}
+.Payment-title{
+    display:  flex;
+    justify-content: center;
+    max-width: 500px !important;
+    border: 0.8px solid #c9c9c9;
+    border-radius: 12px;
+}
+.Payment-title-h3{
+    color: #198754 !important;
+    font-size: 22px !important;
+    color: #333 !important;
+    margin-top: 18px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+/* .text-center{
+    margin-top: 18px;
+    margin-bottom: 40px;
+} */
+
+.row-from{
+    padding: 0 !important;
+}
+.card-logo {
+    opacity: 0.5;
+    transition: opacity 0.3s;
+    width: 40px;
+    height: 20px;
+    margin: 0 5px;
+}
+.payment-page .align-items-center {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.select-placeholder {
+    color: #6c757d; 
+    font-weight: normal; 
+    font-style: italic; 
+}
+.from-card-list{
+    display: grid;
+    max-width: 468px !important;
+    padding: 0 !important;
+
+}
+.card-list-imglogo{
+    margin: 10px 0 ;
+    display: flex;
+    justify-content: center;
+}
+
+
+.card-list{
+    max-width: 468px !important;
+}
+
+.title-card-list{
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40px;
+    background-color: #f8f3f0;
+    border-radius: 10px ;
+    align-items: center;
+    text-align: center;
+}
+.title-product-payment{
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40px;
+    background-color: #f8f3f0;
+    border-radius: 10px ;
+    align-items: center;
+}
+
+.col.body-product-payment{
+    display: flex;
+    flex-direction: row;
+   justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+     flex: initial !important;
+}
+
+.product-subtotal-title{
+    display: block;
+    padding-right: 20px;
+    text-align: right;
+}
+
+.product-payment{
+    padding-left: 20px;
+    text-align: left;
+}
+
+.product-subtotal{
+    padding-right: 20px;
+    text-align: right;
+
+}
+
+.select-placeholder option[value=""][disabled] {
+    display: none; 
+}
+
+.From-payment-card{
+    display: flex;
+    flex-direction: row !important ;
+}
+.from-payment-text{
+    display: flex;
+    flex-direction: row;
+}
+.expiration-container{
+    display: flex;
+    gap: 20px; 
+}
+
+.from-payment-year{
+    display: flex;
+    flex-direction: row;
+    gap: 43px
+
+}
+
+button.add-card-button.btn.btn-primary{
+    border: 0.8px, solid, #c9c9c9 !important;
+    background-color: #f8f3f0 !important;
+    border-radius: 8px !important;
+    font-size: 18px;
+    font-weight: regular;
+    margin-top: 35px;
+    margin-left: 350px;
+
+}
+
+.card-logo.active {
+    opacity: 1;
+}
+
+.payment-page h2, .payment-page h3 {
+    margin-bottom: 20px;
+    
+}
+
+.payment-page .form-group {
+    margin-bottom: 15px;
+}
+
+.payment-page .form-control {
+    margin-bottom: 10px;
+}
+
+.payment-page .form-control[placeholder="Card Number"] {
+    max-width: 100%;
+}
+
+.payment-page .form-control[placeholder="Expiration Date"] {
+    max-width: 330px;
+}
+
+.payment-page .form-control[placeholder="Month"], 
+.payment-page .form-control[placeholder="Year"] {
+    width: 150px;
+    margin-right: 10px;
+}
+
+.product-list-card{
+    display: flex;
+}
+
+/* BllingDetails */
+.billing-details-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px !important;
+    border: 0.8px solid #c9c9c9;
+    border-radius: 12px;
+    margin: 80px auto; 
+}
+.billing-details-page form{
+   margin: 36px 18px;
+}
+.titile-headers{
+    margin-top: 18px;
+}
+.form-input-information{
+    padding: 0 auto;
+    margin-bottom: 20px;
+}
+.form-information{
+    background-color: #f8f3f0;
+}
+.row{
+    display: flex;
+    width: 100%;
+    padding-right: 0 !important;
+}
+.btn-form-information{
+    margin-bottom: 40px !important;
+}
+
+.custom-table {
+    border-collapse: separate; 
+    border-radius: 8px;
+    overflow: hidden;
+}
+.custom-table th, .custom-table td {
+    border: none !important ;
+}
+
+.custom-table td {
+    padding: 10px;
+}
+
+.custom-table th:first-child {
+    text-align: left; 
+}
+
+.custom-table th:last-child {
+    text-align: right;
+}
+
+.custom-table td:first-child {
+    text-align: left; 
+}
+
+.custom-table td:last-child {
+    text-align: right;
+}
+.th {
+    border-style: none !important;
+}
+.table > :not(caption) > * > * {
+    box-shadow: none !important; 
+}
+.table-bordered>:not(caption)>* {
+    border-width: 0 !important; 
+}
+
+.card-number-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.card-logos {
+    display: flex;
+    gap: 10px; 
+}
+
+.label-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Title-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #f8f3f0;
+    max-width: 400px;
+    height: 40px;
+}
+
+.title-card-text{
+    padding-left: 16px;
+    font-weight: bold;
+}
+.title-card-number{
+    text-align: center;
+    font-weight: bold;
+}
+
+
+.title-product-payment{
+    max-width: 600px;
+    border-radius: 8px;
+    background-color: #f8f3f0 !important;
+    height: 40px;     
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    
+
+}
+
+.row-payment-page{
+    display: flex;
+    gap: 80px
+}
+
+.col.title-total-product{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+.total-product{
+    display: block;
+    margin-left: 20px;
+    font-size: 18px ;
+    color: #198754 !important;
+    text-align: left;
+    padding: 0 !important;
+}
+
+.col.total-product-total{
+    display: block;
+    margin-right: 20px;
+    font-size: 18px ;
+    color: #198754 !important;
+    text-align: right;
+    padding: 0 !important;
+}
+.total{
+    padding: 0 !important;
+    color: #198754 !important;
+}
+

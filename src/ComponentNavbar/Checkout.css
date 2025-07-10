@@ -1,0 +1,114 @@
+.checkout-page{
+    margin-top: 100px;
+}
+.product-image{
+    width: 80px !important;
+    height: 80px !important;
+    margin: 29px 28px 29px 28px;
+    border-radius: 5px;
+
+}
+
+.checkout-table{
+    margin-left: 60px;
+}
+table{
+    width: 818px;
+}
+.title-checkout{
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40px;
+    background-color: #f8f3f0;
+    border-radius: 10px ;
+    align-items: center;
+    text-align: center;
+}
+.table-content{
+    margin-top: 5px;
+    max-height: 240px; 
+    overflow-y: auto;
+    scroll-behavior: smooth; 
+}
+
+.table-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.table-content::-webkit-scrollbar-thumb {
+    background-color: #c9c9c9;
+    border-radius: 10px;
+}
+
+
+.title-checkout-product{
+    text-align: left;
+    padding-left: 28px;
+}
+.item-checkout-list{
+    display: flex;
+    flex-direction: row;
+}
+.number-checkout{
+    text-align: center;
+    margin: 57px 0 ;
+}
+.checkout-list-icon{
+    display: flex;
+    flex-direction: row;
+    margin: 57px 0 ;
+   justify-content: right;
+    gap: 16px;
+    padding-right: 28px;
+    
+}
+
+#text{
+    width: 180px !important;
+}
+.checkout-item-icon{
+    color: #c9c9c9;
+}
+.cart-totals{
+    width: 280px;
+    height: 280px;
+    background-color: #f8f3f0;
+    border-radius: 18px;
+}
+.Cart-checkout-title{
+    color: #000;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 16px; 
+    margin-bottom: 0;
+}
+.checkout-total-item {
+    display: flex;
+    justify-content: space-between !important;
+    margin: 35px 0 0 0;
+    padding: 0 15px ;
+}
+.checkout-total-item-list{
+    display: flex;
+    justify-content: space-between !important;
+    margin: 35px 0 0 0;
+    padding: 0 15px ;
+    font-size: 18px;
+    font-weight: bold;
+    color: #198754;
+}
+.checkout-button-cart{
+    border: 1px solid #198754;
+    color: #198754;
+    border-radius: 10px;
+    width: 250px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    margin:35px 15px 0 15px;
+    background-color: #f8f3f0;
+}
