@@ -6,6 +6,7 @@ import { loginFail, loginStart, loginSuccess, logOutFail, logOutStart, logOutSuc
 export const loginUser = async (user, dispatch, navigate) => {
     dispatch(loginStart());
     try {
+        console.log("API URL đang dùng:", process.env.REACT_APP_API_URL);
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/users/login`, user, { withCredentials: true });
         dispatch(loginSuccess(res.data));
         navigate('/home')
@@ -16,6 +17,7 @@ export const loginUser = async (user, dispatch, navigate) => {
 };
 
 export const registerUser = async (user, dispatch) => {
+
     dispatch(registerStart());
     try {
         await axios.post(`${process.env.REACT_APP_API_URL}/api/users/register`, user);
