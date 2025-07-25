@@ -88,7 +88,7 @@ const Profile = () => {
             <Form onSubmit={handleSubmit}>
 
                 <div className="avatar-container">
-                    <Image src={avatar || 'https://placehold.co/150x150'} roundedCircle className="avatar-image" />
+                    <Image src={'https://dummyimage.com/150x150/cccccc/000000&text=Avatar'} roundedCircle className="avatar-image" />
                     <label htmlFor="avatar-upload" className="avatar-upload-label">
                         <FaCamera className="camera-icon" />
                     </label>

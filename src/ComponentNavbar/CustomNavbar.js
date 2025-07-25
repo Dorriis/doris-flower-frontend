@@ -20,7 +20,7 @@ function CustomNavbar() {
     const [searchQuery, setSearchQuery] = useState('');
     const user = useSelector((state) => state.auth.login?.currentUser);
     const Token = user?.accessToken;
-    const avatar = user?.avatar || 'https://placehold.co/150x150';
+    const avatar = user?.avatar || 'https://dummyimage.com/150x150/cccccc/000000&text=Avatar';
     const navigate = useNavigate();
     const dispatch = useDispatch();
     let axiosLogoutJwt = createAxiosInstance(user, dispatch, logOutSuccess);
