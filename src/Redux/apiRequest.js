@@ -31,6 +31,7 @@ export const registerUser = async (user, dispatch) => {
 
 export const logOut = async (dispatch, navigate, accessToken, axiosLogoutJwt) => {
     dispatch(logOutStart());
+    console.log("📤 Bắt đầu gọi API logout...");
     try {
         const newAccessToken = await refreshToken();
         const validToken = newAccessToken || accessToken;
@@ -45,7 +46,7 @@ export const logOut = async (dispatch, navigate, accessToken, axiosLogoutJwt) =>
 
         dispatch(logOutSuccess());
         dispatch(clearCart());
-        navigate("/home");
+        // navigate("/home");
     } catch (err) {
         console.error("Logout Error:", err.response?.data || err.message);
         dispatch(logOutFail());
