@@ -3,16 +3,19 @@ import { Modal, Button, ListGroup } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../Component/useCart';
 import { useSelector } from 'react-redux';
+import LoginRegister from '../ComponentNavbar/LoginRegister';
 import axios from 'axios';
 import './CartModal.css';
 
 const CartModal = ({ show, onClose }) => {
-    const userId = useSelector((state) => state.auth.login?.currentUser?._id);
+    const user = useSelector((state) => state.auth.login?.currentUser);
+    const userId = user?._id;
     const { cartItems = [], setCartItems, onQuantityChange, removeFromCart } = useCart();
     const [productDetails, setProductDetails] = useState([]);
     const [selectedItems, setSelectedItems] = useState([]);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
+    const [showLoginModal, setShowLoginModal] = useState(false);
 
     // Fetch product details based on cart items
     const fetchCart = useCallback(async () => {
@@ -105,8 +108,12 @@ const CartModal = ({ show, onClose }) => {
 
     // Handle checkout
     const handleCheckout = () => {
-        navigate('/checkout', { state: { selectedItems } });
-        onClose();
+        if (!user) {
+            setShowLoginModal(true);
+        } else {
+            navigate('/checkout', { state: { selectedItems } });
+            onClose();
+        }
     };
 
     useEffect(() => {
@@ -129,6 +136,7 @@ const CartModal = ({ show, onClose }) => {
                         Close
                     </Button>
                 </Modal.Footer>
+                <LoginRegister show={showLoginModal} handleClose={() => setShowLoginModal(false)} />
             </Modal>
         );
     }
@@ -183,6 +191,7 @@ const CartModal = ({ show, onClose }) => {
                     Check Out
                 </Button>
             </Modal.Footer>
+            <LoginRegister show={showLoginModal} handleClose={() => setShowLoginModal(false)} />
         </Modal>
     );
 };

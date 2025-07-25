@@ -20,7 +20,7 @@ function CustomNavbar() {
     const [searchQuery, setSearchQuery] = useState('');
     const user = useSelector((state) => state.auth.login?.currentUser);
     const Token = user?.accessToken;
-    const avatar = user?.avatar || 'https://via.placeholder.com/150';
+    const avatar = user?.avatar || 'https://placehold.co/150x150';
     const navigate = useNavigate();
     const dispatch = useDispatch();
     let axiosLogoutJwt = createAxiosInstance(user, dispatch, logOutSuccess);
@@ -48,9 +48,9 @@ function CustomNavbar() {
             if (user.isAdmin && !location.pathname.startsWith('/admin-dashboard')) {
                 navigate('/admin-dashboard');
             }
-        } else if (!location.pathname.startsWith('/login-register')) {
+        } else if (!user && location.pathname === '/') {
 
-            navigate('/login-register');
+            navigate('');
         }
     }, [user, location.pathname, navigate]);
 
