@@ -1,6 +1,6 @@
 import axios from "axios";
 import { refreshToken } from '../Component/axiosConfig'
-import { loginFail, loginStart, loginSuccess, logOutFail, logOutStart, logOutSuccess, registerFail, registerStart, registerSuccess } from "./authSlice";
+import { loginFail, loginStart, loginSuccess, logOutFail, logOutStart, logOutSuccess, registerFail, registerStart, registerSuccess, clearCart } from "./authSlice";
 
 
 export const loginUser = async (user, dispatch, navigate) => {
@@ -44,6 +44,7 @@ export const logOut = async (dispatch, navigate, accessToken, axiosLogoutJwt) =>
         );
 
         dispatch(logOutSuccess());
+        dispatch(clearCart());
         navigate("/home");
     } catch (err) {
         console.error("Logout Error:", err.response?.data || err.message);

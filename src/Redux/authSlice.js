@@ -13,6 +13,11 @@ const authSlice = createSlice({
             error: false,
             succsess: false,
         },
+        cart: {
+            products: [],
+            quantity: 0,
+            total: 0,
+        }
 
 
     },
@@ -59,11 +64,16 @@ const authSlice = createSlice({
         logOutStart: (state) => {
             state.login.isFetching = true;
         },
+        clearCart: (state) => {
+            state.cart.products = [];
+            state.cart.quantity = 0;
+            state.cart.total = 0;
+        }
     }
 
 
 });
 
 
-export const { loginStart, loginFail, loginSuccess, registerStart, registerFail, registerSuccess, logOutFail, logOutStart, logOutSuccess } = authSlice.actions;
+export const { loginStart, loginFail, loginSuccess, registerStart, registerFail, registerSuccess, logOutFail, logOutStart, logOutSuccess, clearCart } = authSlice.actions;
 export default authSlice.reducer;  
