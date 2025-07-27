@@ -22,7 +22,10 @@ export const CartProvider = ({ children }) => {
                 );
 
                 if (Array.isArray(response.data)) {
-                    setCartItems(response.data);
+                    setCartItems(response.data.map(item => ({
+                        ...item,
+                        productId: item.id
+                    })));
                 } else {
                     console.error('Received cart is not an array or is undefined:', response.data);
                     setCartItems([]);

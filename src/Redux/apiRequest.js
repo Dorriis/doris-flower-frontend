@@ -1,5 +1,5 @@
 import axios from "axios";
-import { refreshToken } from '../Component/axiosConfig'
+import { refreshToken } from '../Component/axiosConfig';
 import { loginFail, loginStart, loginSuccess, logOutFail, logOutStart, logOutSuccess, registerFail, registerStart, registerSuccess, clearCart } from "./authSlice";
 
 

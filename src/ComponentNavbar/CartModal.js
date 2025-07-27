@@ -1,69 +1,74 @@
 import React, { useState, useEffect, useCallback } from 'react';
+
 import { Modal, Button, ListGroup } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../Component/useCart';
 import { useSelector } from 'react-redux';
 import LoginRegister from '../ComponentNavbar/LoginRegister';
-import axios from 'axios';
+// import axios from 'axios';
 import './CartModal.css';
 
 const CartModal = ({ show, onClose }) => {
     const user = useSelector((state) => state.auth.login?.currentUser);
     const userId = user?._id;
     const { cartItems = [], setCartItems, onQuantityChange, removeFromCart } = useCart();
-    const [productDetails, setProductDetails] = useState([]);
+    // const [productDetails, setProductDetails] = useState([]);
     const [selectedItems, setSelectedItems] = useState([]);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [showLoginModal, setShowLoginModal] = useState(false);
 
     // Fetch product details based on cart items
-    const fetchCart = useCallback(async () => {
-        if (cartItems.length === 0) {
-            setProductDetails([]);
-            return;
-        }
+    // const fetchCart = useCallback(async () => {
+    //     if (cartItems.length === 0) {
+    //         setProductDetails([]);
+    //         return;
+    //     }
 
-        const productIds = cartItems.map(item => item.id).join(',');
-        try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/controlUsers/${userId}/cart`, {
-                params: { ids: productIds },
-            });
+    //     const productIds = cartItems.map(item => item.id).join(',');
+    //     try {
+    //         const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/controlUsers/${userId}/cart`, {
+    //             params: { ids: productIds },
+    //         });
 
-            setProductDetails(response.data);
-        } catch (error) {
-            console.error('Error fetching product details:', error);
-        }
-    }, [cartItems, userId]);
+    //         setProductDetails(response.data);
+    //     } catch (error) {
+    //         console.error('Error fetching product details:', error);
+    //     }
+    // }, [cartItems, userId]);
 
-    const fetchProductDetails = useCallback(async () => {
-        if (cartItems.length === 0) {
-            setProductDetails([]);
-            return;
-        }
+    // useEffect(() => {
+    //     fetchCart();
+    // }, [fetchCart]);
 
-        const productIds = cartItems.map(item => item.productId);
-        try {
-            const productRequests = productIds.map(id =>
-                axios.get(`${process.env.REACT_APP_API_URL}/api/products/${id}`)
-            );
+    // const fetchProductDetails = useCallback(async () => {
+    //     if (cartItems.length === 0) {
+    //         setProductDetails([]);
+    //         return;
+    //     }
 
-            const responses = await Promise.all(productRequests);
-            const products = responses.map(response => ({ ...response.data, quantity: cartItems.find(item => item.productId === response.data._id)?.quantity || 1 }));
-            setProductDetails(products);
-        } catch (error) {
-            console.error('Error fetching product details:', error);
-        }
-    }, [cartItems]);
+    //     const productIds = cartItems.map(item => item.productId);
+    //     try {
+    //         const productRequests = productIds.map(id =>
+    //             axios.get(`${process.env.REACT_APP_API_URL}/api/products/${id}`)
+    //         );
 
-    useEffect(() => {
-        fetchCart();
-    }, [fetchCart]);
+    //         const responses = await Promise.all(productRequests);
+    //         const products = responses.map(response => ({ ...response.data, quantity: cartItems.find(item => item.productId === response.data._id)?.quantity || 1 }));
+    //         setProductDetails(products);
+    //     } catch (error) {
+    //         console.error('Error fetching product details:', error);
+    //     }
+    // }, [cartItems]);
+
+    // useEffect(() => {
+    //     fetchCart();
+    // }, [fetchCart]);
 
 
-    useEffect(() => {
-        fetchProductDetails();
-    }, [fetchProductDetails, cartItems]);
+    // useEffect(() => {
+    //     fetchProductDetails();
+    // }, [fetchProductDetails, cartItems]);
 
     const handleQuantityChange = async (productId, newQuantity) => {
         const currentQuantity = cartItems.find(item => item.productId === productId)?.quantity;
@@ -116,13 +121,13 @@ const CartModal = ({ show, onClose }) => {
         }
     };
 
-    useEffect(() => {
-        if (show) {
-            fetchProductDetails();
-        }
-    }, [show, fetchProductDetails]);
+    // useEffect(() => {
+    //     if (show) {
+    //         fetchProductDetails();
+    //     }
+    // }, [show, fetchProductDetails]);
 
-    if (!productDetails.length) {
+    if (!cartItems.length) {
         return (
             <Modal show={show} onHide={onClose} size="md" className="cart-modal">
                 <Modal.Header>
@@ -148,7 +153,7 @@ const CartModal = ({ show, onClose }) => {
             </Modal.Header>
             <Modal.Body>
                 <ListGroup>
-                    {productDetails.map((product) => (
+                    {cartItems.map((product) => (
                         <ListGroup.Item key={product._id}>
                             <div className="cart-item">
                                 <input
