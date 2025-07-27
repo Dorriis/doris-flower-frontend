@@ -69,6 +69,22 @@ const CartModal = ({ show, onClose }) => {
     // useEffect(() => {
     //     fetchProductDetails();
     // }, [fetchProductDetails, cartItems]);
+    useEffect(() => {
+        if (!user && show) {
+            setShowLoginModal(true);
+        } else {
+            setShowLoginModal(false);
+        }
+    }, [user, show]);
+
+    if (!user) {
+        return (
+            <LoginRegister show={showLoginModal} handleClose={() => {
+                setShowLoginModal(false);
+                onClose(); // Đóng cả Cart nếu cần
+            }} />
+        );
+    }
 
     const handleQuantityChange = async (productId, newQuantity) => {
         const currentQuantity = cartItems.find(item => item.productId === productId)?.quantity;
@@ -196,8 +212,60 @@ const CartModal = ({ show, onClose }) => {
                     Check Out
                 </Button>
             </Modal.Footer>
-            <LoginRegister show={showLoginModal} handleClose={() => setShowLoginModal(false)} />
         </Modal>
+
+
+        // <Modal show={show} onHide={onClose} size="md" className="cart-modal">
+        //     <Modal.Header closeButton>
+        //         <Modal.Title>Shopping Cart</Modal.Title>
+        //     </Modal.Header>
+        //     <Modal.Body>
+        //         <ListGroup>
+        //             {cartItems.map((product) => (
+        //                 <ListGroup.Item key={product._id}>
+        //                     <div className="cart-item">
+        //                         <input
+        //                             type="checkbox"
+        //                             className="cart-item-checkbox"
+        //                             onChange={() => handleCheckboxChange(product)}
+        //                             checked={selectedItems.some((selectedItem) => selectedItem._id === product._id)}
+        //                         />
+        //                         <img src={product.img || 'path/to/default-image.jpg'} alt={product.name} className="cart-item-img" />
+        //                         <div className="cart-item-details">
+        //                             <div className="cart-item-name">{product.name}</div>
+        //                             <div className="cart-item-quantity">
+        //                                 <button
+        //                                     className="quantity-btn"
+        //                                     onClick={() => handleQuantityChange(product._id, product.quantity - 1)}
+        //                                     disabled={product.quantity <= 0}
+        //                                 >
+        //                                     -
+        //                                 </button>
+        //                                 <span>{product.quantity}</span>
+        //                                 <button
+        //                                     className="quantity-btn"
+        //                                     onClick={() => handleQuantityChange(product._id, product.quantity + 1)}
+        //                                     disabled={isLoading}
+        //                                 >
+        //                                     +
+        //                                 </button>
+        //                             </div>
+        //                             <div className="item-price">
+        //                                 <div className="cart-item-price">${parseFloat(product.price).toFixed(2)}</div>
+        //                             </div>
+        //                         </div>
+        //                     </div>
+        //                 </ListGroup.Item>
+        //             ))}
+        //         </ListGroup>
+        //     </Modal.Body>
+        //     <Modal.Footer>
+        //         <Button className="btn-checkout" variant="primary" onClick={handleCheckout}>
+        //             Check Out
+        //         </Button>
+        //     </Modal.Footer>
+        //     <LoginRegister show={showLoginModal} handleClose={() => setShowLoginModal(false)} />
+        // </Modal>
     );
 };
 
