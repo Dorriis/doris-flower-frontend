@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import './LoginRegister.css'
 import { loginUser, registerUser } from '../Redux/apiRequest';
@@ -119,98 +119,12 @@ function LoginRegister({ show, handleClose }) {
   };
 
 
-  //   return (
-
-  //     <Container className="login-register-container" style={{ maxWidth: '500px', marginTop: '50px' }}>
-  //       <Row className="mb-4 text-center">
-  //         <Col>
-  //           <div className="header-title">
-  //             <div
-  //               className={`header-title-item ${isLogin ? 'active' : 'inactive'}`}
-  //               onClick={() => setIsLogin(true)}
-  //             >
-  //               Login
-  //             </div>
-  //             <div
-  //               className={`header-title-item ${!isLogin ? 'active' : 'inactive'}`}
-  //               onClick={() => setIsLogin(false)}
-
-  //             >
-  //               Register
-  //             </div>
-  //           </div>
-  //         </Col>
-  //       </Row>
-
-  //       <form className="login-register-form" onSubmit={handleSubmit}>
-  //         {isLogin ? (
-  //           <>
-  //             <h2 className='header-title-form'>Login</h2>
-  //             <input className="custom-form-control"
-  //               type="email"
-  //               value={email}
-  //               onChange={(e) => setEmail(e.target.value)}
-  //               placeholder="Email"
-  //             />
-  //             <input className="custom-form-control"
-  //               type={showPassword ? 'text' : 'password'}
-  //               value={password}
-  //               onChange={(e) => setPassword(e.target.value)}
-  //               placeholder="Password"
-  //             />
-  //             <span className='checkbox-show' >
-  //               <input type="checkbox" onClick={toggleShowPassword} /> Show Password
-  //             </span>
-  //             <button className='btn-login-form' type="submit">Login</button>
-  //           </>
-  //         ) : (
-  //           <>
-  //             <h2 className='header-title-form'>Register</h2>
-  //             <input className="custom-form-control"
-  //               type="text"
-  //               value={username}
-  //               onChange={(e) => setUsername(e.target.value)}
-  //               placeholder="Name"
-  //             />
-  //             <input className="custom-form-control"
-  //               type="email"
-  //               value={email}
-  //               onChange={(e) => setEmail(e.target.value)}
-  //               placeholder="Email"
-  //             />
-  //             <input className="custom-form-control"
-  //               type={showPassword ? 'text' : 'password'}
-  //               value={password}
-  //               onChange={(e) => setPassword(e.target.value)}
-  //               placeholder="Password"
-  //             />
-  //             <input className="custom-form-control"
-  //               type="password"
-  //               value={confirmPassword}
-  //               onChange={(e) => setConfirmPassword(e.target.value)}
-  //               placeholder="Confirm Password"
-  //             />
-  //             <span className='checkbox-show' >
-  //               <input type="checkbox" onClick={toggleShowPassword} /> Show Password
-  //             </span>
-  //             <button className='btn-login-form' type="submit">Register</button>
-  //           </>
-  //         )}
-  //       </form>
-  //       {error && <p>{error}</p>}
-
-  //     </Container>
-
-  //   );
-  // }
-
-  // export default LoginRegister;
-
   return (
-    <Modal show={show} onHide={handleClose} centered>
-      <Modal.Body>
-        <div className="login-register-container" style={{ padding: '20px' }}>
-          <div className="header-title text-center mb-4">
+
+    <Container className="login-register-container" style={{ maxWidth: '500px', marginTop: '50px' }}>
+      <Row className="mb-4 text-center">
+        <Col>
+          <div className="header-title">
             <div
               className={`header-title-item ${isLogin ? 'active' : 'inactive'}`}
               onClick={() => setIsLogin(true)}
@@ -220,65 +134,151 @@ function LoginRegister({ show, handleClose }) {
             <div
               className={`header-title-item ${!isLogin ? 'active' : 'inactive'}`}
               onClick={() => setIsLogin(false)}
+
             >
               Register
             </div>
           </div>
+        </Col>
+      </Row>
 
-          <form className="login-register-form" onSubmit={handleSubmit}>
-            {isLogin ? (
-              <>
-                <h4 className="header-title-form">Login</h4>
-                <input className="custom-form-control"
-                  type="email" value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Email"
-                />
-                <input className="custom-form-control"
-                  type={showPassword ? 'text' : 'password'} value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Password"
-                />
-                <span className='checkbox-show'>
-                  <input type="checkbox" onClick={toggleShowPassword} /> Show Password
-                </span>
-                <button className='btn-login-form' type="submit">Login</button>
-              </>
-            ) : (
-              <>
-                <h4 className="header-title-form">Register</h4>
-                <input className="custom-form-control"
-                  type="text" value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Name"
-                />
-                <input className="custom-form-control"
-                  type="email" value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Email"
-                />
-                <input className="custom-form-control"
-                  type={showPassword ? 'text' : 'password'} value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Password"
-                />
-                <input className="custom-form-control"
-                  type="password" value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  placeholder="Confirm Password"
-                />
-                <span className='checkbox-show'>
-                  <input type="checkbox" onClick={toggleShowPassword} /> Show Password
-                </span>
-                <button className='btn-login-form' type="submit">Register</button>
-              </>
-            )}
-          </form>
-          {error && <p className="error-message mt-3">{error}</p>}
-        </div>
-      </Modal.Body>
-    </Modal>
+      <form className="login-register-form" onSubmit={handleSubmit}>
+        {isLogin ? (
+          <>
+            <h2 className='header-title-form'>Login</h2>
+            <input className="custom-form-control"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+            />
+            <input className="custom-form-control"
+              type={showPassword ? 'text' : 'password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+            />
+            <span className='checkbox-show' >
+              <input type="checkbox" onClick={toggleShowPassword} /> Show Password
+            </span>
+            <button className='btn-login-form' type="submit">Login</button>
+          </>
+        ) : (
+          <>
+            <h2 className='header-title-form'>Register</h2>
+            <input className="custom-form-control"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Name"
+            />
+            <input className="custom-form-control"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+            />
+            <input className="custom-form-control"
+              type={showPassword ? 'text' : 'password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+            />
+            <input className="custom-form-control"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="Confirm Password"
+            />
+            <span className='checkbox-show' >
+              <input type="checkbox" onClick={toggleShowPassword} /> Show Password
+            </span>
+            <button className='btn-login-form' type="submit">Register</button>
+          </>
+        )}
+      </form>
+      {error && <p>{error}</p>}
+
+    </Container>
+
   );
 }
 
 export default LoginRegister;
+
+//   return (
+//     <Modal show={show} onHide={handleClose} centered>
+//       <Modal.Body>
+//         <div className="login-register-container" style={{ padding: '20px' }}>
+//           <div className="header-title text-center mb-4">
+//             <div
+//               className={`header-title-item ${isLogin ? 'active' : 'inactive'}`}
+//               onClick={() => setIsLogin(true)}
+//             >
+//               Login
+//             </div>
+//             <div
+//               className={`header-title-item ${!isLogin ? 'active' : 'inactive'}`}
+//               onClick={() => setIsLogin(false)}
+//             >
+//               Register
+//             </div>
+//           </div>
+
+//           <form className="login-register-form" onSubmit={handleSubmit}>
+//             {isLogin ? (
+//               <>
+//                 <h4 className="header-title-form">Login</h4>
+//                 <input className="custom-form-control"
+//                   type="email" value={email}
+//                   onChange={(e) => setEmail(e.target.value)}
+//                   placeholder="Email"
+//                 />
+//                 <input className="custom-form-control"
+//                   type={showPassword ? 'text' : 'password'} value={password}
+//                   onChange={(e) => setPassword(e.target.value)}
+//                   placeholder="Password"
+//                 />
+//                 <span className='checkbox-show'>
+//                   <input type="checkbox" onClick={toggleShowPassword} /> Show Password
+//                 </span>
+//                 <button className='btn-login-form' type="submit">Login</button>
+//               </>
+//             ) : (
+//               <>
+//                 <h4 className="header-title-form">Register</h4>
+//                 <input className="custom-form-control"
+//                   type="text" value={username}
+//                   onChange={(e) => setUsername(e.target.value)}
+//                   placeholder="Name"
+//                 />
+//                 <input className="custom-form-control"
+//                   type="email" value={email}
+//                   onChange={(e) => setEmail(e.target.value)}
+//                   placeholder="Email"
+//                 />
+//                 <input className="custom-form-control"
+//                   type={showPassword ? 'text' : 'password'} value={password}
+//                   onChange={(e) => setPassword(e.target.value)}
+//                   placeholder="Password"
+//                 />
+//                 <input className="custom-form-control"
+//                   type="password" value={confirmPassword}
+//                   onChange={(e) => setConfirmPassword(e.target.value)}
+//                   placeholder="Confirm Password"
+//                 />
+//                 <span className='checkbox-show'>
+//                   <input type="checkbox" onClick={toggleShowPassword} /> Show Password
+//                 </span>
+//                 <button className='btn-login-form' type="submit">Register</button>
+//               </>
+//             )}
+//           </form>
+//           {error && <p className="error-message mt-3">{error}</p>}
+//         </div>
+//       </Modal.Body>
+//     </Modal>
+//   );
+// }
+
+// export default LoginRegister;
