@@ -9,6 +9,7 @@ export const CartProvider = ({ children }) => {
     const user = useSelector((state) => state.auth.login?.currentUser);
 
     const userId = user?._id;
+    console.log("userId in useCart.js:", userId);
 
     // Fetch cart items when userId changes
     useEffect(() => {
