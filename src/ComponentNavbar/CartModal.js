@@ -119,13 +119,24 @@ const CartModal = ({ show, onClose }) => {
         }
     };
 
-    const handleCheckboxChange = (item) => {
-        setSelectedItems((prevSelectedItems) =>
-            prevSelectedItems.some((selectedItem) => selectedItem._id === item._id)
-                ? prevSelectedItems.filter((selectedItem) => selectedItem._id !== item._id)
-                : [...prevSelectedItems, item]
-        );
+    // const handleCheckboxChange = (item) => {
+    //     setSelectedItems((prevSelectedItems) =>
+    //         prevSelectedItems.some((selectedItem) => selectedItem._id === item._id)
+    //             ? prevSelectedItems.filter((selectedItem) => selectedItem._id !== item._id)
+    //             : [...prevSelectedItems, item]
+    //     );
+    // };
+    const handleCheckboxChange = (product) => {
+        setSelectedItems((prevSelectedItems) => {
+            const alreadySelected = prevSelectedItems.find(item => item.productId === product.productId);
+            if (alreadySelected) {
+                return prevSelectedItems.filter(item => item.productId !== product.productId);
+            } else {
+                return [...prevSelectedItems, product];
+            }
+        });
     };
+
 
     // Handle checkout
     const handleCheckout = () => {
@@ -176,7 +187,7 @@ const CartModal = ({ show, onClose }) => {
                                     type="checkbox"
                                     className="cart-item-checkbox"
                                     onChange={() => handleCheckboxChange(product)}
-                                    checked={selectedItems.some((selectedItem) => selectedItem._id === product._id)}
+                                    checked={selectedItems.some((selectedItem) => selectedItem.productId === product.productId)}
                                 />
                                 <img src={product.img || 'path/to/default-image.jpg'} alt={product.name} className="cart-item-img" />
                                 <div className="cart-item-details">
@@ -184,7 +195,8 @@ const CartModal = ({ show, onClose }) => {
                                     <div className="cart-item-quantity">
                                         <button
                                             className="quantity-btn"
-                                            onClick={() => handleQuantityChange(product._id, product.quantity - 1)}
+                                            onClick={() => handleQuantityChange(product.productId || product._id, product.quantity - 1)}
+
                                             disabled={product.quantity <= 0}
                                         >
                                             -
@@ -192,7 +204,8 @@ const CartModal = ({ show, onClose }) => {
                                         <span>{product.quantity}</span>
                                         <button
                                             className="quantity-btn"
-                                            onClick={() => handleQuantityChange(product._id, product.quantity + 1)}
+                                            onClick={() => handleQuantityChange(product.productId || product._id, product.quantity + 1)}
+
                                             disabled={isLoading}
                                         >
                                             +
