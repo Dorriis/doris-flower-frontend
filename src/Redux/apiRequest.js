@@ -50,31 +50,63 @@ export const registerUser = async (user, dispatch) => {
 //         throw new Error(errorMessage);
 //     }
 // };
-
 export const logOut = async (dispatch, navigate, accessToken, axiosLogoutJwt) => {
     dispatch(logOutStart());
     console.log("📤 Bắt đầu gọi API logout...");
     try {
-        const newAccessToken = await refreshToken();
-        const validToken = newAccessToken || accessToken;
+        let tokenToUse = accessToken;
+
+        if (!accessToken) {
+            const refreshed = await refreshToken();
+            if (refreshed) tokenToUse = refreshed;
+        }
+
+        if (!tokenToUse) throw new Error("No valid token to logout");
+
         await axiosLogoutJwt.post(
             `${process.env.REACT_APP_API_URL}/api/users/logout`,
             null,
             {
-                headers: { Authorization: `Bearer ${validToken}` },
-                withCredentials: true
+                headers: { Authorization: `Bearer ${tokenToUse}` },
+                withCredentials: true,
             }
         );
 
         dispatch(logOutSuccess());
         dispatch(clearCart());
-        // navigate("/home");
+        navigate("/home");
+
     } catch (err) {
         console.error("Logout Error:", err.response?.data || err.message);
         dispatch(logOutFail());
-
     }
 };
+
+
+// export const logOut = async (dispatch, navigate, accessToken, axiosLogoutJwt) => {
+//     dispatch(logOutStart());
+//     console.log("📤 Bắt đầu gọi API logout...");
+//     try {
+//         const newAccessToken = await refreshToken();
+//         const validToken = newAccessToken || accessToken;
+//         await axiosLogoutJwt.post(
+//             `${process.env.REACT_APP_API_URL}/api/users/logout`,
+//             null,
+//             {
+//                 headers: { Authorization: `Bearer ${validToken}` },
+//                 withCredentials: true
+//             }
+//         );
+
+//         dispatch(logOutSuccess());
+//         dispatch(clearCart());
+//         // navigate("/home");
+//     } catch (err) {
+//         console.error("Logout Error:", err.response?.data || err.message);
+//         dispatch(logOutFail());
+
+//     }
+// };
 
 
 
