@@ -81,10 +81,7 @@ const authSlice = createSlice({
             state.cart.total = 0;
         }
     }
-
-
 });
-
 
 export const { loginStart, loginFail, loginSuccess, registerStart, registerFail, registerSuccess, logOutFail, logOutStart, logOutSuccess, clearCart } = authSlice.actions;
 export default authSlice.reducer;  

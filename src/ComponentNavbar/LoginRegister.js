@@ -17,7 +17,8 @@ function LoginRegister({ show, handleClose }) {
   const [error, setError] = useState('');
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
 
   // Validate email
@@ -75,8 +76,9 @@ function LoginRegister({ show, handleClose }) {
 
   // Handle submit register
   const handleRegister = async (e) => {
-    e.preventDefault();
     setError('');
+    setSuccessMessage('');
+    setLoading(true);
 
     if (!validateEmail(email)) {
       setError('Invalid email format');
@@ -101,9 +103,8 @@ function LoginRegister({ show, handleClose }) {
     };
 
     try {
-
       await registerUser(newUser, dispatch);
-
+      setSuccessMessage('Registration successful! You can now log in.');
     } catch (error) {
       setError('Registration failed: ' + (error.response?.data?.message || error.message));
     }
@@ -197,88 +198,13 @@ function LoginRegister({ show, handleClose }) {
           </>
         )}
       </form>
+      {loading && <p style={{ color: 'blue', marginTop: '16px' }}>Processing, please wait...</p>}
+      {successMessage && <p style={{ color: 'green', marginTop: '16px' }}>{successMessage}</p>}
+      {error && <p style={{ color: 'red', marginTop: '16px' }}>{error}</p>}
       {error && <p>{error}</p>}
-
     </Container>
-
   );
 }
 
 export default LoginRegister;
 
-//   return (
-//     <Modal show={show} onHide={handleClose} centered>
-//       <Modal.Body>
-//         <div className="login-register-container" style={{ padding: '20px' }}>
-//           <div className="header-title text-center mb-4">
-//             <div
-//               className={`header-title-item ${isLogin ? 'active' : 'inactive'}`}
-//               onClick={() => setIsLogin(true)}
-//             >
-//               Login
-//             </div>
-//             <div
-//               className={`header-title-item ${!isLogin ? 'active' : 'inactive'}`}
-//               onClick={() => setIsLogin(false)}
-//             >
-//               Register
-//             </div>
-//           </div>
-
-//           <form className="login-register-form" onSubmit={handleSubmit}>
-//             {isLogin ? (
-//               <>
-//                 <h4 className="header-title-form">Login</h4>
-//                 <input className="custom-form-control"
-//                   type="email" value={email}
-//                   onChange={(e) => setEmail(e.target.value)}
-//                   placeholder="Email"
-//                 />
-//                 <input className="custom-form-control"
-//                   type={showPassword ? 'text' : 'password'} value={password}
-//                   onChange={(e) => setPassword(e.target.value)}
-//                   placeholder="Password"
-//                 />
-//                 <span className='checkbox-show'>
-//                   <input type="checkbox" onClick={toggleShowPassword} /> Show Password
-//                 </span>
-//                 <button className='btn-login-form' type="submit">Login</button>
-//               </>
-//             ) : (
-//               <>
-//                 <h4 className="header-title-form">Register</h4>
-//                 <input className="custom-form-control"
-//                   type="text" value={username}
-//                   onChange={(e) => setUsername(e.target.value)}
-//                   placeholder="Name"
-//                 />
-//                 <input className="custom-form-control"
-//                   type="email" value={email}
-//                   onChange={(e) => setEmail(e.target.value)}
-//                   placeholder="Email"
-//                 />
-//                 <input className="custom-form-control"
-//                   type={showPassword ? 'text' : 'password'} value={password}
-//                   onChange={(e) => setPassword(e.target.value)}
-//                   placeholder="Password"
-//                 />
-//                 <input className="custom-form-control"
-//                   type="password" value={confirmPassword}
-//                   onChange={(e) => setConfirmPassword(e.target.value)}
-//                   placeholder="Confirm Password"
-//                 />
-//                 <span className='checkbox-show'>
-//                   <input type="checkbox" onClick={toggleShowPassword} /> Show Password
-//                 </span>
-//                 <button className='btn-login-form' type="submit">Register</button>
-//               </>
-//             )}
-//           </form>
-//           {error && <p className="error-message mt-3">{error}</p>}
-//         </div>
-//       </Modal.Body>
-//     </Modal>
-//   );
-// }
-
-// export default LoginRegister;
