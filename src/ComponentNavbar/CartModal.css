@@ -22,7 +22,7 @@ cart-modal-right {
 }
 
 /* Nội dung bên trong modal */
-.cart-modal-content {
+/* .cart-modal-content {
   height: 100%;
   border-radius: 0;
   background-color: #F8F3F0;
@@ -30,9 +30,9 @@ cart-modal-right {
   flex-direction: column;
   overflow-y: auto;
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-}
+} */
 
-/* Tắt nền xám */
+
 .modal-backdrop {
   display: none !important;
 }
