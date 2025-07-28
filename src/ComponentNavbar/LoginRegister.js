@@ -17,8 +17,7 @@ function LoginRegister({ show, handleClose }) {
   const [error, setError] = useState('');
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
+  // const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   // Validate email
@@ -76,9 +75,8 @@ function LoginRegister({ show, handleClose }) {
 
   // Handle submit register
   const handleRegister = async (e) => {
+    e.preventDefault();
     setError('');
-    setSuccessMessage('');
-    setLoading(true);
 
     if (!validateEmail(email)) {
       setError('Invalid email format');
@@ -103,8 +101,9 @@ function LoginRegister({ show, handleClose }) {
     };
 
     try {
+
       await registerUser(newUser, dispatch);
-      setSuccessMessage('Registration successful! You can now log in.');
+
     } catch (error) {
       setError('Registration failed: ' + (error.response?.data?.message || error.message));
     }
@@ -198,13 +197,13 @@ function LoginRegister({ show, handleClose }) {
           </>
         )}
       </form>
-      {loading && <p style={{ color: 'blue', marginTop: '16px' }}>Processing, please wait...</p>}
-      {successMessage && <p style={{ color: 'green', marginTop: '16px' }}>{successMessage}</p>}
-      {error && <p style={{ color: 'red', marginTop: '16px' }}>{error}</p>}
       {error && <p>{error}</p>}
+
     </Container>
+
   );
 }
 
 export default LoginRegister;
+
 
