@@ -9,6 +9,33 @@
     transition: transform 0.3s ease-in-out; 
     
 }
+cart-modal-right {
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  margin: 0;
+  width: 350px;
+  height: 100vh;
+  transform: none !important;
+  z-index: 1060;
+  pointer-events: auto;
+}
+
+/* Nội dung bên trong modal */
+.cart-modal-content {
+  height: 100%;
+  border-radius: 0;
+  background-color: #F8F3F0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tắt nền xám */
+.modal-backdrop {
+  display: none !important;
+}
 .btn-footer-shoppingcart.btn.btn-primary{
     border-radius: 10px;
     width: 250px;

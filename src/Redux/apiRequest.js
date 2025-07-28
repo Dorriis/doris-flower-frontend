@@ -28,53 +28,53 @@ export const registerUser = async (user, dispatch) => {
     }
 
 };
-export const logOut = async (dispatch, navigate, accessToken, axiosLogoutJwt) => {
-    dispatch(logOutStart());
-    console.log("📤 Bắt đầu gọi API logout...");
-    try {
-        const response = await axiosLogoutJwt.post(
-            `${process.env.REACT_APP_API_URL}/api/users/logout`,
-            null,
-            {
-                withCredentials: true
-            }
-        );
-        dispatch(logOutSuccess(null));
-        dispatch(clearCart());
-        navigate("/home");
-        return response.data;
-    } catch (err) {
-        const errorMessage = err.response?.data?.message || err.message || "Logout failed";
-        console.error("Logout Error:", errorMessage);
-        dispatch(logOutFail(errorMessage));
-        throw new Error(errorMessage);
-    }
-};
-
 // export const logOut = async (dispatch, navigate, accessToken, axiosLogoutJwt) => {
 //     dispatch(logOutStart());
 //     console.log("📤 Bắt đầu gọi API logout...");
 //     try {
-//         const newAccessToken = await refreshToken();
-//         const validToken = newAccessToken || accessToken;
-//         await axiosLogoutJwt.post(
+//         const response = await axiosLogoutJwt.post(
 //             `${process.env.REACT_APP_API_URL}/api/users/logout`,
 //             null,
 //             {
-//                 headers: { Authorization: `Bearer ${validToken}` },
 //                 withCredentials: true
 //             }
 //         );
-
-//         dispatch(logOutSuccess());
+//         dispatch(logOutSuccess(null));
 //         dispatch(clearCart());
-//         // navigate("/home");
+//         navigate("/home");
+//         return response.data;
 //     } catch (err) {
-//         console.error("Logout Error:", err.response?.data || err.message);
-//         dispatch(logOutFail());
-
+//         const errorMessage = err.response?.data?.message || err.message || "Logout failed";
+//         console.error("Logout Error:", errorMessage);
+//         dispatch(logOutFail(errorMessage));
+//         throw new Error(errorMessage);
 //     }
 // };
+
+export const logOut = async (dispatch, navigate, accessToken, axiosLogoutJwt) => {
+    dispatch(logOutStart());
+    console.log("📤 Bắt đầu gọi API logout...");
+    try {
+        const newAccessToken = await refreshToken();
+        const validToken = newAccessToken || accessToken;
+        await axiosLogoutJwt.post(
+            `${process.env.REACT_APP_API_URL}/api/users/logout`,
+            null,
+            {
+                headers: { Authorization: `Bearer ${validToken}` },
+                withCredentials: true
+            }
+        );
+
+        dispatch(logOutSuccess());
+        dispatch(clearCart());
+        // navigate("/home");
+    } catch (err) {
+        console.error("Logout Error:", err.response?.data || err.message);
+        dispatch(logOutFail());
+
+    }
+};
 
 
 
