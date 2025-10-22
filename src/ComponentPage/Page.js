@@ -58,7 +58,7 @@ function Page() {
                     <Row className='row-journey-img-page'>
                         <Col md={6} className='journey-img-page'>
                             <img
-                                src="https://scontent.fsgn13-2.fna.fbcdn.net/v/t39.30808-6/484373177_623483760590249_4019584298065671212_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=f727a1&_nc_ohc=x1rv7cKjT8IQ7kNvwHOCCDY&_nc_oc=AdnzliwIk3vJ3IXtzBTeN_nTzknx8rbeB1Ks4Bg4iiZgJ_JWj9wJdZHAhiKg_S5CmUeo9wDC9FxfpN6PlplpeL4U&_nc_zt=23&_nc_ht=scontent.fsgn13-2.fna&_nc_gid=Is1wLIbKVjouLI2BBttTNw&oh=00_AfQEPa6Bqsrc4_4RDz6HsxizXnFEoMu8knhGSu6Dk6H4Cg&oe=68880678"
+                                src="https://scontent.fhan4-3.fna.fbcdn.net/v/t39.30808-6/483062669_623479697257322_5221709891554190531_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=f727a1&_nc_ohc=rCPhz04GD6wQ7kNvwEvC4f8&_nc_oc=AdkgkD9wE1PPOnR_-aOLPvyRKEd-w8FTqVH6qS-jAL6ipllZcKwhykzLQKxJChzx7xw&_nc_zt=23&_nc_ht=scontent.fhan4-3.fna&_nc_gid=S9lC-_QxMsDCYo4n8O3vtg&oh=00_Aff2wMdw-JU008NwO1MiV50GgMyc-Hs1F-nNSzQwqRIcLw&oe=68FE3C89"
                                 alt="Journey img"
                                 className="img-journey"
                             />
@@ -79,7 +79,7 @@ function Page() {
                     <div className="container text-center my-5">
                         <div className="position-relative d-inline-block">
                             <img
-                                src="https://scontent.fsgn13-2.fna.fbcdn.net/v/t51.75761-15/503898547_17961309980926872_3841993802719510179_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=92JF24NucrcQ7kNvwH3_Vqk&_nc_oc=Admt5uDrN8Is1nXjPVu6gbtzJzhD19PKsE8zlICJ3BFPIzdD78jnACaQMlXoUJJl2nmhU8jSBnfU1kHpfaAKXH4K&_nc_zt=23&_nc_ht=scontent.fsgn13-2.fna&_nc_gid=GuHvBGpQnHoeLwwEB9k9bA&oh=00_AfSg-vyiZjvyK0sy8MCAFDyGsbnsbYBh0yEVcSantZA9Dg&oe=68882405"
+                                src=""
                                 alt="Video mockup"
                                 className="video-img"
                             />
